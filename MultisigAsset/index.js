@@ -85,7 +85,7 @@ const MakeOptInAccount = async(algodclient,assetID,account) =>{
 
 // Make multisig account is optin for particular asset 
 const MakeOptInMultisigAccount = async(algodclient,assetID,multsigaddr,account1,account2, mparams) =>{
-    console.log("Make Optin Multisig Account => "+multsigaddr.addr+ " Assset ID => "+ assetID)
+    console.log("Make Optin Multisig Account => "+multsigaddr+ " Assset ID => "+ assetID)
    
     let params = await algodclient.getTransactionParams().do();
     let note=  undefined;
@@ -183,6 +183,7 @@ const TransferAsset = async (algodclient, assetID, multsigaddr, account1, accoun
     confirmedTxn = await algosdk.waitForConfirmation(algodclient, xtx.txId, 4);
     console.log("Transaction " + xtx.txId + " confirmed in round " + confirmedTxn["confirmed-round"]);
     await printAssetHolding(algodclient, account3.addr, assetID);
+    console.log("Transaction Completed Successfully")
 }
 
 
